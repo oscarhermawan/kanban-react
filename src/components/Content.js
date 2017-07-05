@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { loadData, delete_Task, add_Task} from '../actions'
 
 
 class Content extends React.Component {
   constructor(props){
     super(props)
+
   }
+
 
   render(){
     return(
@@ -35,7 +38,7 @@ class Content extends React.Component {
                   <footer className="card-footer">
                     <a className="card-footer-item">Todo</a>
                     <a className="card-footer-item">Edit</a>
-                    <a className="card-footer-item">Delete</a>
+                    <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                   </footer>
                 </div>
                 <br/>
@@ -68,7 +71,7 @@ class Content extends React.Component {
                     <footer className="card-footer">
                       <a className="card-footer-item">Doing</a>
                       <a className="card-footer-item">Edit</a>
-                      <a className="card-footer-item">Delete</a>
+                      <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                     </footer>
                   </div>
                   <br/>
@@ -101,7 +104,7 @@ class Content extends React.Component {
                     <footer className="card-footer">
                       <a className="card-footer-item">Done</a>
                       <a className="card-footer-item">Edit</a>
-                      <a className="card-footer-item">Delete</a>
+                      <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                     </footer>
                   </div>
                   <br/>
@@ -133,7 +136,7 @@ class Content extends React.Component {
                     </div>
                     <footer className="card-footer">
                       <a className="card-footer-item">Edit</a>
-                      <a className="card-footer-item">Delete</a>
+                      <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                     </footer>
                   </div>
                   <br/>
@@ -142,6 +145,8 @@ class Content extends React.Component {
             }) }
           </div>
         </div>
+
+
       </div>
     )
   }
@@ -153,4 +158,11 @@ const mapStateToProps = (state) =>{
   }
 }
 
-export default connect(mapStateToProps, null) (Content)
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    addTask:(task)=>dispatch(add_Task(task)),
+    deleteTask:(task)=>dispatch(delete_Task(task)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Content)
