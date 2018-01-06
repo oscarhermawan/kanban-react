@@ -50,11 +50,18 @@ class Navbar extends React.Component {
             </section>
 
             <footer className="modal-card-foot">
-              <a className="button is-success" onClick={()=> this.props.addTask(this.tambahTask())}>Save changes</a>
+              <a className="button is-success"
+                onClick={()=>
+                  {
+                    this.props.addTask(this.tambahTask())
+                    this.props.unactiveModal()
+                  }
+                }>Save changes</a>
               <a className="button" onClick={() => this.props.unactiveModal()}>Cancel</a>
             </footer>
           </div>
         </div>
+
       </div>
     )
   }

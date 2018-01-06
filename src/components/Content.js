@@ -1,16 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loadData, delete_Task, add_Task} from '../actions'
+import { loadData, delete_Task, add_Task, change_Status} from '../actions'
 
 
 class Content extends React.Component {
   constructor(props){
     super(props)
-
   }
 
-
   render(){
+    {console.log('hasil = ',this.props)}
     return(
       <div>
         <div className="columns is-multiline is-mobile">
@@ -36,7 +35,7 @@ class Content extends React.Component {
                     </div>
                   </div>
                   <footer className="card-footer">
-                    <a className="card-footer-item">Todo</a>
+                    <a className="card-footer-item" onClick={()=> this.props.changeStatus(task)}>Todo</a>
                     <a className="card-footer-item">Edit</a>
                     <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                   </footer>
@@ -69,7 +68,7 @@ class Content extends React.Component {
                       </div>
                     </div>
                     <footer className="card-footer">
-                      <a className="card-footer-item">Doing</a>
+                      <a className="card-footer-item" onClick={()=> this.props.changeStatus(task)}>Doing</a>
                       <a className="card-footer-item">Edit</a>
                       <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                     </footer>
@@ -102,7 +101,7 @@ class Content extends React.Component {
                       </div>
                     </div>
                     <footer className="card-footer">
-                      <a className="card-footer-item">Done</a>
+                      <a className="card-footer-item" onClick={()=> this.props.changeStatus(task)}>Done</a>
                       <a className="card-footer-item">Edit</a>
                       <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
                     </footer>
@@ -160,7 +159,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    addTask:(task)=>dispatch(add_Task(task)),
+    changeStatus:(task)=>dispatch(change_Status(task)),
     deleteTask:(task)=>dispatch(delete_Task(task)),
   }
 }

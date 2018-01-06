@@ -11,6 +11,13 @@ export const delete_Task = (task) => {
   }
 }
 
+export const change_Status = (task) => {
+  return {
+    type: 'CHANGE_STATUS',
+    payload:task,
+  }
+}
+
 export const add_Task = (task) => {
   return {
     type: 'ADD_TASK',
