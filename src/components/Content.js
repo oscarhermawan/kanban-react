@@ -103,7 +103,7 @@ class Content extends React.Component {
                     <footer className="card-footer">
                       <a className="card-footer-item" onClick={()=> this.props.changeStatus(task)}>Done</a>
                       <a className="card-footer-item">Edit</a>
-                      <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
+                      <a className="card-footer-item" onClick={() => this.deleteCondition(task)}>Delete</a>
                     </footer>
                   </div>
                   <br/>
@@ -135,7 +135,7 @@ class Content extends React.Component {
                     </div>
                     <footer className="card-footer">
                       <a className="card-footer-item">Edit</a>
-                      <a className="card-footer-item" onClick={() => this.props.deleteTask(task)}>Delete</a>
+                      <a className="card-footer-item" onClick={() => this.deleteCondition(task)}>Delete</a>
                     </footer>
                   </div>
                   <br/>
@@ -148,6 +148,11 @@ class Content extends React.Component {
 
       </div>
     )
+  }
+
+  deleteCondition(task){
+    alert('Data akan dihapus')
+      this.props.deleteTask(task)
   }
 }
 
