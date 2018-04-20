@@ -1,12 +1,14 @@
-export const loadData = () => {
+export const add_Task = (task) => {
   return {
-    type: 'LOAD_DATA'
-  };
+    type: 'ADD_TASK',
+    payload:task,
+  }
 }
 
-export const delete_Task = (task) => {
+
+export const edit_Task = (task) => {
   return {
-    type: 'DELETE_TASK',
+    type: 'EDIT_TASK',
     payload:task,
   }
 }
@@ -18,9 +20,9 @@ export const change_Status = (task) => {
   }
 }
 
-export const add_Task = (task) => {
+export const delete_Task = (task) => {
   return {
-    type: 'ADD_TASK',
+    type: 'DELETE_TASK',
     payload:task,
   }
 }

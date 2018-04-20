@@ -17,20 +17,23 @@ const initialState = [{
 }]
 
 export default(state = initialState, action) =>{
-  if(action.type === 'LOAD_DATA'){
-    return [...state]
-  }
-  else if(action.type === 'ADD_TASK'){
+  if(action.type === 'ADD_TASK'){
     const id = state.length+1
     const tmp = { ...action.payload, id:id}
     return [...state, tmp]
-  }
-  else if(action.type === 'DELETE_TASK'){
+  } else if(action.type === 'EDIT_TASK'){
+    let tmp = state.map(task => {
+        if(task.id === action.payload.id){
+          return {...action.payload}
+        } else {
+          return task
+        }
+      })
+    return tmp
+  } else if(action.type === 'DELETE_TASK'){
     const tmp = state.filter(task => task.id !== action.payload.id)
     return [...tmp]
-  }
-
-  else if(action.type === 'CHANGE_STATUS'){
+  } else if(action.type === 'CHANGE_STATUS'){
     let newTask = {}
     if(action.payload.status === 'backlog'){
       newTask = {
@@ -55,12 +58,12 @@ export default(state = initialState, action) =>{
       }
     }
 
-    const tmp = state.map(task => { if(task.id == action.payload.id){
+    const tmp = state.map(task => { if(task.id === action.payload.id){
       return newTask;
     } else {
       return task
     }})
-    return [...tmp]
+    return tmp
   }
   return state
 }

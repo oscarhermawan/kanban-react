@@ -14,10 +14,9 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="App">
             <Navbar /><br />
-
-            <Switch>
-              <Route exact path="/tasks" component={Content} />
-            </Switch>
+              <Switch>
+                <Route exact path="/tasks" component={Content} />
+              </Switch>
           </div>
         </BrowserRouter>
       </Provider>

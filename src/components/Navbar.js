@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { active_Modal, unactive_Modal, add_Task} from '../actions'
 
@@ -10,8 +10,13 @@ class Navbar extends React.Component {
         <nav className="nav has-shadow">
           <div className="container">
             <div className="nav-left">
-              <a className="nav-item is-tab is-hidden-mobile is-active" href="/">Home</a>
-              <a className="nav-item is-tab is-hidden-mobile" href="/tasks">Tasks</a>
+              <NavLink to="/">
+                <a className="nav-item is-tab is-hidden-mobile">Home</a>
+              </NavLink>
+              <NavLink to="/tasks">
+                <a className="nav-item is-tab is-hidden-mobile">Tasks</a>
+              </NavLink>
+
             </div>
             <span className="nav-toggle">
               <span></span>
@@ -22,9 +27,6 @@ class Navbar extends React.Component {
             <a className="nav-item is-tab" onClick={() => this.props.activeModal()}>
               Add Task
             </a>
-              <a className="nav-item is-tab">
-                Profile
-              </a>
               <a className="nav-item is-tab">Log out</a>
             </div>
           </div>

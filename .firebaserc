@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "belajar-kanban-firebase",
+    "staging": "belajar-kanban-firebase"
+  }
+}
